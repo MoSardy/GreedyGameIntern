@@ -50,7 +50,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         //get the spannable text according to the typed query
         Spannable theName = getSpannableAppName(text,resolveInfo.loadLabel(context.getPackageManager()).toString());
 
-        //setting icon and name
+        //setting icon and name, name is highlited according to query
         holder.text.setText(theName);
         holder.icon.setImageDrawable(resolveInfo.loadIcon(context.getPackageManager()));
 
