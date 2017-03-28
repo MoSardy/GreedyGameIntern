@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">GreedyGameIntern</string>
     <string name="msg_not_found">No Application Found!</string>
+    <string name="search_hint">Type the App name</string>
 </resources>

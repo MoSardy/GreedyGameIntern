@@ -22,9 +22,10 @@
             android:layout_weight="3"
             android:background="@drawable/roundbg"
             android:ems="10"
-            android:hint="Type the App name"
+            android:hint="@string/search_hint"
             android:inputType="text|textPersonName"
-            android:padding="10dp" />
+            android:padding="10dp"
+            tools:ignore="InefficientWeight" />
 
     </LinearLayout>
 
@@ -37,12 +38,12 @@
         android:background="@color/colorPrimary"
         android:elevation="1dp"
         android:padding="5dp"
-        android:text="TextView"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:targetApi="lollipop" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rview"
