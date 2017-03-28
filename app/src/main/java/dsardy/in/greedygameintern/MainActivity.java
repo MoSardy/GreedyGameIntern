@@ -24,9 +24,6 @@ public class MainActivity extends AppCompatActivity {
     TextView msg;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +32,20 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText)findViewById(R.id.editTextapp);
         msg = (TextView)findViewById(R.id.textViewMsg);
         recyclerView = (RecyclerView) findViewById(R.id.rview);
+
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,4));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        //getting list of all installed apps, a list of ResolveInfo objects
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         final List<ResolveInfo> pkgAppsList = getApplicationContext().getPackageManager().queryIntentActivities( mainIntent, 0);
 
 
 
-        
-        getappslist();
-
+        //with this we can eliminate the search button, and this is realtime so better(for our case)
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -58,9 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
                 String textinput = charSequence.toString().toLowerCase();
-
-
-                final List<ResolveInfo> filteredlist = new ArrayList<ResolveInfo>();
+                final List<ResolveInfo> filteredlist = new ArrayList<>();
 
                 for (int ii = 0; i < pkgAppsList.size(); i++) {
 
@@ -100,10 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getappslist() {
 
-
-    }
 
 
 }

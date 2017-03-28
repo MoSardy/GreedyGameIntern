@@ -47,12 +47,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
         final ResolveInfo resolveInfo = pkgAppsList.get(position);
 
+        //get the spannable text according to the typed query
         Spannable theName = getSpannableAppName(text,resolveInfo.loadLabel(context.getPackageManager()).toString());
 
+        //setting icon and name
         holder.text.setText(theName);
         holder.icon.setImageDrawable(resolveInfo.loadIcon(context.getPackageManager()));
 
-        // Set a click listener for CardView
+        // Setting a click listener for CardView
         holder.c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,65 +72,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     private Spannable getSpannableAppName(String text, String name) {
 
-        String appname;
-
-
-        /*
-        SpannableStringBuilder sb = new SpannableStringBuilder(name);
-        appname = sb.toString();
-
-        StyleSpan b = new StyleSpan(android.graphics.Typeface.BOLD); // Span to make text bold
-        ColorStateList blueColor = new ColorStateList(new int[][] { new int[] {}}, new int[] { Color.BLUE });
-        TextAppearanceSpan highlightSpan = new TextAppearanceSpan(null, Typeface.BOLD, -1, blueColor, null);
-
-
-        int indexi = 0;
-
-        int startPos = text.toLowerCase(Locale.US).indexOf(name.toLowerCase(Locale.US));
-
-        if(startPos!=-1){
-            sb.setSpan(highlightSpan, 0, 0 + text.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE); // make text input characters Bold
-            appname = sb.toString();
-        }
-
-                return  appname;
-
-
-
-*/
-
-        // ignore case and accents
-        // the same thing should have been done for the search text
-        /*String normalizedText = Normalizer.normalize(name, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
-
-        int start = normalizedText.indexOf(text);
-        if (start < 0) {
-            // not found, nothing to to
-            return name;
-        } else {
-            // highlight each appearance in the original text
-            // while searching in normalized text
-            Spannable highlighted = new SpannableString(name);
-            while (start >= 0) {
-                int spanStart = Math.min(start, name.length());
-                int spanEnd = Math.min(start + text.length(), name.length());
-
-                highlighted.setSpan(new BackgroundColorSpan(<"">), spanStart, spanEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                start = normalizedText.indexOf(text, spanEnd);
-            }
-
-            return highlighted.toString();
-        }*/
-
         Spannable sb = new SpannableString(name);
         sb.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), name.toLowerCase().indexOf(text.toLowerCase()),
                 name.toLowerCase().indexOf(text.toLowerCase()) + text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         return sb;
-
-
     }
 
     @Override
