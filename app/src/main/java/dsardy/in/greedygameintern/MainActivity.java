@@ -1,7 +1,6 @@
 package dsardy.in.greedygameintern;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
                     msg.setVisibility(View.VISIBLE);
                     msg.setText(R.string.msg_not_found);
-                    adapter = new DataAdapter(filteredlist,getApplicationContext());
+                    adapter = new DataAdapter(filteredlist,getApplicationContext(),textinput);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 }else {
 
                     msg.setVisibility(View.GONE);
-                    adapter = new DataAdapter(filteredlist,getApplicationContext());
+                    adapter = new DataAdapter(filteredlist,getApplicationContext(), textinput);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
